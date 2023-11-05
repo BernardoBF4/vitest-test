@@ -1,10 +1,14 @@
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, beforeEach } from 'vitest'
 
 function warnLater(message) {
   setTimeout(() => {
     console.log(message)
   }, 2_000)
 }
+
+beforeEach(() => {
+  vi.useFakeTimers()
+})
 
 test('warnLater', async () => {
   const logSpy = vi.spyOn(console, 'log')
@@ -13,7 +17,7 @@ test('warnLater', async () => {
 
   expect(logSpy).to.not.toBeCalled()
 
-  await new Promise((resolve) => setTimeout(resolve, 2_000))
+  vi.advanceTimersByTime(2_000)
 
   expect(logSpy).toBeCalledWith('2 seconds passed')
 })
