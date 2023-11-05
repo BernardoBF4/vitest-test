@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "vitest": "^0.34.6"
+  },
+  "devDependencies": {
+    "msw": "^2.0.3"
   }
 }
