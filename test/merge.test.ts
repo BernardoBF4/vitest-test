@@ -40,3 +40,9 @@ test('deep merge with overlaps', () => {
     accounts: { github: 'unknown', twitter: 'antfu7' },
   })
 })
+
+test('throws error when merging different types', () => {
+  expect(() => deepMerge(['foo', 'bar'], { foo: 'bar' })).toThrowError(
+    'Error: cannot merge two different types'
+  )
+})

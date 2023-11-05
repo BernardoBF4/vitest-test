@@ -3,6 +3,10 @@ export function deepMerge(a: Object | Array<any>, b: Object | Array<any>) {
     return [...a, ...b]
   }
 
+  if (Array.isArray(a) || Array.isArray(b) || typeof a !== typeof b) {
+    throw new Error('Error: cannot merge two different types')
+  }
+
   const merged = { ...a }
   for (const key of Object.keys(b)) {
     if (typeof a[key] === 'object' || Array.isArray(a[key])) {
