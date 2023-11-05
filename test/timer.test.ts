@@ -17,7 +17,7 @@ test('warnLater', async () => {
 
   expect(logSpy).to.not.toBeCalled()
 
-  vi.advanceTimersByTime(2_000)
+  vi.advanceTimersToNextTimer()
 
   expect(logSpy).toBeCalledWith('2 seconds passed')
 })
